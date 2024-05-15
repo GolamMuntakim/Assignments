@@ -4,8 +4,8 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Banner = () => {
     return (
-        <div className="w-[1260px] mx-auto">
-            <div className="flex items-center justify-center text-white bg-black">
+        <div className="w-[600px]  lg:w-[1260px] mx-auto">
+            <div className="flex flex-col lg:flex-row pb-4 items-center justify-center text-white bg-black">
                 <div className="space-y-4">
                     <h1 className="flex items-center text-3xl font-bold">Let's <img src="/images/Mask.png" alt="" srcset="" />Learn New</h1>
                     <h1 className="text-3xl font-bold">Course And Gain</h1>
@@ -16,16 +16,16 @@ const Banner = () => {
                     <button className="btn btn-outline rounded-full">Our Story<IoMdPlayCircle/></button>
                     </div>
                 </div>
-                <div><img className="h-[400px]" src="/banner.png" alt="" /></div>
+                <div><img className="hidden lg:flex h-[400px]" src="/banner.png" alt="" /></div>
             </div>
-            <div className="flex justify-between mt-8 w-[1260px] mx-auto ">
-                <h1 className="text-3xl font-bold">Our <span className="text-green-500">Top Courses</span></h1>
+            <div className="flex justify-between mt-8 w-[400px] lg:w-[1260px] mx-auto ">
+                <h1 className="text-xl lg:text-3xl font-bold">Our <span className="text-green-500">Top Courses</span></h1>
                 <button className="btn btn-info rounded-full bg-[#F0F0F0] border-none">View All <FaArrowRight />
 </button>
             </div>
             {/* features */}
-            <div className="w-[1260px] mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 w-[1000px] mx-auto gap-4 ">
+            <div className="lg:w-[1260px] w-[600px] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 w-[500px] lg:w-[1000px] mx-auto gap-4 ">
                 <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ const Banner = () => {
                 </div>
             </div>
             </div>
-            <div className="mt-8 w-[1260px] mx-auto text-center rounded-full">
+            <div className="mt-8 w-[600px] lg:w-[1260px] mx-auto text-center rounded-full">
             <button className="btn rounded-full">Features</button>
             </div>
             <div className="text-center">
@@ -120,7 +120,7 @@ const Banner = () => {
                 <p>Empowering you to reach your goals through online education!</p>
             </div>
            <div className="mt-10">
-           <div className="grid grid-cols-1 lg:grid-cols-3  w-[1200px] p-8 gap-4">
+           <div className="grid grid-cols-1 lg:grid-cols-3 w-[600px] lg:w-[1200px] p-8 gap-4">
                 <div className="flex flex-col items-center bg-[#E1E2E3] p-8 backdrop-blur-md  rounded-xl transition duration-300 ease-in-out hover:scale-110">
                     <img src="/images/verify.png" alt="" />
                     <h1 className="mt-4">Certified Platform</h1>

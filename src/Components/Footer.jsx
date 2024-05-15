@@ -2,10 +2,10 @@
 
 const Footer = () => {
     return (
-        <div className="mt-10 w-[1260px] mx-auto  ">
+        <div className="mt-10 w-[600px] lg:w-[1260px] mx-auto  ">
             <footer className="footer p-10 bg-black text-white">
   <aside>
-     <img src="/images/logo.png" alt="" srcset="" />
+     <img src="/images/logo.png" alt=""  />
     <p>ACME Industries Ltd.<br/>Providing reliable tech since 1992</p>
   </aside> 
   <nav>

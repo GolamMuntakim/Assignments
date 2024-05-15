@@ -85,6 +85,7 @@ const Register = () => {
                 id='name'
                 autoComplete='name'
                 name='name'
+                placeholder='username'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
                 required
@@ -101,6 +102,7 @@ const Register = () => {
                 id='photo'
                 autoComplete='photo'
                 name='photo'
+                placeholder='photo url'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
                 required
@@ -117,6 +119,7 @@ const Register = () => {
                 id='LoggingEmailAddress'
                 autoComplete='email'
                 name='email'
+                placeholder='email'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='email'
                 required
@@ -135,6 +138,7 @@ const Register = () => {
 
               <input
                 id='loggingPassword'
+                placeholder='password'
                 autoComplete='current-password'
                 name='password'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
