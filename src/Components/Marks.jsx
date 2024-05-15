@@ -63,7 +63,7 @@ const Marks = () => {
             
                 <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
                 <div className="">
-                 <h1> <iframe src={mark.link} height="200" ></iframe></h1>
+                 <h1> <iframe src={mark.link} width="600" height="300" allow="autoplay"></iframe></h1>
                          {/* <h1 className="font-bold"> submitted Doc/Pdf link :{mark.link} </h1> */}
                         <h1 className="font-bold">  Notes :{mark.note}</h1>
                       </div>

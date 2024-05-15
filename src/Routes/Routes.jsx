@@ -1,6 +1,5 @@
 import {
     createBrowserRouter,
-    RouterProvider,
   } from "react-router-dom";
 import Main from "../Components/Main";
 import Home from "../Components/Home";
@@ -47,7 +46,7 @@ import Marks from "../Components/Marks";
       },
       {
         path:'/takeassignments/:id',
-        element:<TakeAssignments></TakeAssignments>,
+        element:<PrivateRoute><TakeAssignments></TakeAssignments></PrivateRoute>,
         loader:({params})=> fetch(`${import.meta.env.VITE_API_URL}/viewassignmengts/${params.id}`)
       },
       {
@@ -61,7 +60,7 @@ import Marks from "../Components/Marks";
       },
       {
         path:'/mysubmittedassignments',
-        element:<MySubmittedAssignments></MySubmittedAssignments>
+        element:<PrivateRoute><MySubmittedAssignments></MySubmittedAssignments></PrivateRoute>
       },
       {
         path:'/pendingassignments',

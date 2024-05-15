@@ -14,7 +14,9 @@ const MySubmittedAssignments = () => {
     },[user])
     const getData= async()=>{
       try {
-        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/submit/${user?.email}`);
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/submit/${user?.email}`,{
+          withCredentials:true
+        });
         setSubmitted(data);
         setLoading(false);
       } catch (error) {

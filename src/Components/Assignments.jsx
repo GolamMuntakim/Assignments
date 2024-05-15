@@ -11,9 +11,7 @@ const Assignments = () => {
     console.log(assignments)
     const [selectedDifficulty, setSelectedDifficulty] = useState('')
     const {user} = useContext(AuthContext)
-    
-    // const {assignments.maker} = assignments
-    // console.log(maker.email)
+
     useEffect(()=>{
 
         getData()
@@ -28,13 +26,12 @@ const Assignments = () => {
     const handleDelete= async email =>{
         try{
             const assignmentDelete = assignments.find(assignment => assignment.maker.email === email)
-            // if(!assignmentDelete){
-            //     return toast.error("Assignment is not found")
-            // }
             if(user.email !== assignmentDelete.maker.email){
                 return toast.error("sorry!only maker can delete it")
             }
-            const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/deleteassignment/${email}`)
+            const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/deleteassignment/${email}`,{
+                withCredentials:true
+            })
             console.log(data)
             toast.success('Deleted Succesfully')
             getData()
@@ -48,7 +45,7 @@ const Assignments = () => {
     }
     const filtered = selectedDifficulty? assignments.filter(assignment=>assignment.difficulty_level === selectedDifficulty) : assignments
     return (
-        <div>
+        <div className='w-[1260px] mx-auto'>
              <div className="mt-8">
                 <h1 className='text-4xl font-bold text-center'></h1>
                 <div className="flex justify-center">
@@ -63,7 +60,7 @@ const Assignments = () => {
                 </div>
                 </div>
 
-            <div className='grid grid-cols-3 gap-4 mt-8'>
+            <div className='grid grid-cols-3 gap-4 mt-8 w-[1260px] mx-auto'>
         {
             filtered.map(assignment=> (
                 <div key={assignment._id} className="card w-96 bg-base-100 shadow-xl">

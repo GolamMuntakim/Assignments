@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 
 const Login = () => {
@@ -17,7 +18,14 @@ const Login = () => {
     //google sign in
     const handleGoogleSignin = async() =>{
         try{
-            await signInWithGoogle()
+            const result = await signInWithGoogle()
+            console.log(result.user)
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{
+              email: result?.user?.email,
+            },{
+              withCredentials:true
+            }) 
+            console.log(data)
             toast.success('sign  in succesfully')
             navigate(from, {replace:true})
         }catch(err){
@@ -35,7 +43,13 @@ const Login = () => {
         console.log({email, pass})
         try{
             const result = await signIn(email,pass)
-            console.log(result)
+            console.log(result.user)
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/jwt`,{
+              email: result?.user?.email,
+            },{
+              withCredentials:true
+            }) 
+            console.log(data)
             navigate(from, {replace:true})
             toast.success('signin succesfully')
         }catch(err){

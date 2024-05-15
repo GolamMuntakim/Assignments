@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
 
@@ -8,6 +8,7 @@ const PendingAssignments = () => {
     const [pending, setPending] = useState([])
     const [error, setError] = useState(null)
     const {user} = useContext(AuthContext)
+    // const navigate = useNavigate()
     // console.log(user)
     useEffect(()=>{
         if(user && pending.length ===0){
@@ -19,7 +20,7 @@ const PendingAssignments = () => {
           const response = await axios(`${import.meta.env.VITE_API_URL}/pendingassignments`)
             setPending(response.data)
             setError(null)
-        
+            // navigate('/')
         }catch(err){
           console.log(err)
           setError('error')
