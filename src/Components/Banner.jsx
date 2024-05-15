@@ -115,8 +115,8 @@ const Banner = () => {
             <div className="mt-8 w-[350px] md:w-[400px] lg:w-[1260px] mx-auto text-center rounded-full">
             <button className="btn rounded-full">Features</button>
             </div>
-            <div className="text-center w-[350px] md:w-[400px] lgw-[1260px]">
-                <p className="text-3xl font-bold">Why We <span className="text-green-500">Are Better Than</span> Others</p>
+            <div className="text-center w-[350px] md:w-[400px] lg:w-[1260px]">
+                <p className="text-3xl w-full  font-bold">Why We <span className="text-green-500">Are Better Than</span> Others</p>
                 <p>Empowering you to reach your goals through online education!</p>
             </div>
            <div className="mt-10">
