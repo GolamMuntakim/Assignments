@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const Banner = () => {
     return (
-        <div className="w-[400px]  lg:w-[1260px] mx-auto">
+        <div className="w-[400px] md:w-[450px] lg:w-[1260px] mx-auto">
             <div className="flex flex-col lg:flex-row pb-4 items-center justify-center text-white bg-black">
                 <div className="space-y-4">
                     <h1 className="flex items-center text-3xl font-bold">Let's <img src="/images/Mask.png" alt="" srcset="" />Learn New</h1>
@@ -24,7 +24,7 @@ const Banner = () => {
 </button>
             </div>
             {/* features */}
-            <div className="lg:w-[1260px] w-[350px] mx-auto">
+            <div className="lg:w-[1260px] md:w-[400px] w-[350px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 w-[350px] lg:w-[1000px] mx-auto gap-4 ">
                 <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
@@ -112,15 +112,15 @@ const Banner = () => {
                 </div>
             </div>
             </div>
-            <div className="mt-8 w-[350px] lg:w-[1260px] mx-auto text-center rounded-full">
+            <div className="mt-8 w-[350px] md:w-[400px] lg:w-[1260px] mx-auto text-center rounded-full">
             <button className="btn rounded-full">Features</button>
             </div>
-            <div className="text-center w-[350px] lgw-[1260px]">
+            <div className="text-center w-[350px] md:w-[400px] lgw-[1260px]">
                 <p className="text-3xl font-bold">Why We <span className="text-green-500">Are Better Than</span> Others</p>
                 <p>Empowering you to reach your goals through online education!</p>
             </div>
            <div className="mt-10">
-           <div className="grid grid-cols-1 lg:grid-cols-3 w-[350px] lg:w-[1260px] p-8 gap-4">
+           <div className="grid grid-cols-1 lg:grid-cols-3 w-[350px] md:w-[400px] lg:w-[1260px] p-8 gap-4">
                 <div className="flex flex-col items-center bg-[#E1E2E3] p-8 backdrop-blur-md  rounded-xl transition duration-300 ease-in-out hover:scale-110">
                     <img src="/images/verify.png" alt="" />
                     <h1 className="mt-4">Certified Platform</h1>
@@ -143,7 +143,7 @@ const Banner = () => {
            </div>
            {/* faq */}
            <div>
-           <section className=" text-black w-[350px]  lg:w-[1260px]">
+           <section className=" text-black w-[350px] md:w-[400px]  lg:w-[1260px]">
 	<div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
 		<h2 className="mb-12 text-4xl font-bold leading-none text-center sm:text-5xl">Frequently Asked Questions</h2>
 		<div className="flex flex-col divide-y sm:px-8 lg:px-12 xl:px-32 divide-gray-700">

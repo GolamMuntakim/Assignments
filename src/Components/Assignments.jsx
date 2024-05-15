@@ -60,7 +60,7 @@ console.log(count)
         setCurrentPage(v)
     }
     return (
-        <div className='w-[1260px] mx-auto'>
+        <div className='w-[350px] md:w-[400px] lg:w-[1260px]  mx-auto'>
              
                 <div className="flex justify-center">
             <select
@@ -79,10 +79,10 @@ console.log(count)
 
                 {/*  */}
 
-            <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 mt-8 w-[1260px] mx-auto'>
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 mt-8 w-[350px] md:w-[400px] lg:w-[1260px] mx-auto'>
         {
             assignments.map(assignment=> (
-                <div key={assignment._id} className="card w-96 bg-base-100 shadow-xl transition duration-300 ease-in-out hover:scale-110">
+                <div key={assignment._id} className="card w-[350px] lg:w-96 bg-base-100 shadow-xl transition duration-300 ease-in-out hover:scale-110">
 <figure><img className='h-[200px] w-full' src={assignment.thumbnail_image_url} alt="Shoes" /></figure>
 <div className="card-body">
 <h2 className="card-title">{assignment.title}</h2>
@@ -90,7 +90,7 @@ console.log(count)
 <p><span className='font-bold'>Marks</span>: {assignment.marks}</p>
 <p><span className='font-bold'>Difficulty</span>: {assignment.difficulty_level}</p>
 <p><span className='font-bold'>Description</span>:{assignment.description}</p>
-<div className="card-actions justify-end">
+<div className="card-actions justify-center">
         <button onClick={()=>handleDelete(assignment._id, assignment.maker.email)} className="btn bg-red-800 text-white">Delete</button>
         <Link to={`/updateassignments/${assignment._id}`}><button className="btn bg-green-800 text-white">Update</button></Link>
   <Link to={`/viewassignmengts/${assignment._id}`}><button className="btn bg-black text-white">View Assignments</button></Link>
@@ -101,7 +101,7 @@ console.log(count)
         }
     </div>
     {/* pagination */}
-    <div className='flex justify-center mt-12'>
+    <div className='flex justify-center w-[350px] md:w-[400px] lg:w-[1260px] mt-12'>
         <button
         disabled={currentPage===1}
         onClick={()=>handlePagination(currentPage-1)}
