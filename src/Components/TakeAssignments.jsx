@@ -63,8 +63,8 @@ const TakeAssignments = () => {
     }
     return (
         <div >
-             <div className="w-[1260px] flex mt-10 min-h-[calc(100vh-306px)]">
-             <form onSubmit={handleFormSubmission} className="mx-auto bg-black p-8 rounded-lg">
+             <div className="w-[350px] md:w-[400px] mx-auto lg:w-[1260px] flex mt-10 min-h-[calc(100vh-306px)]">
+             <form onSubmit={handleFormSubmission} className="mx-auto h-[300px] bg-black p-8 rounded-lg">
           <div className='mx-auto'>
             <div>
               <label className='text-white ' htmlFor='price'>
