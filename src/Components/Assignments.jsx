@@ -3,35 +3,49 @@ import { useContext, useEffect, useState } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
-// import { getDate } from 'date-fns';
 import { AuthContext } from '../Providers/AuthProvider';
 
 const Assignments = () => {
+    const [pages, setPage] = useState(3)
+    const [count, setCount] = useState(0)
+    const pagenumber = Math.ceil(count/pages)
+    const pageButton = [...Array(pagenumber).keys()].map(item => item + 1)
+    const [currentPage, setCurrentPage] = useState(1)
     const [assignments, setAssignments] = useState([])
+    const [filter, setFilter] = useState(' ')
     console.log(assignments)
-    const [selectedDifficulty, setSelectedDifficulty] = useState('')
     const {user} = useContext(AuthContext)
+    console.log(user)
+    console.log(assignments)
 
     useEffect(()=>{
-
         getData()
-    },[])
+    },[currentPage,pages,filter])
 
     const getData = async () =>{
-        const {data} = await axios(`${import.meta.env.VITE_API_URL}/assignments`)
-       
+        const {data} = await axios(`${import.meta.env.VITE_API_URL}/all-assignments?page=${currentPage}&size=${pages}&filter=${filter.trim()}`)
         setAssignments(data)
+        
+    }
+    // second
+    useEffect(()=>{
+        getCount()
+    },[filter])
+
+    const getCount = async () =>{
+        const {data} = await axios(`${import.meta.env.VITE_API_URL}/assignments-count?filter=${filter}`)
+        setCount(data.count)
     }
 
-    const handleDelete= async email =>{
+console.log(count)
+
+
+    const handleDelete= async (id, makerEmail) =>{
         try{
-            const assignmentDelete = assignments.find(assignment => assignment.maker.email === email)
-            if(user.email !== assignmentDelete.maker.email){
+            if(user.email !== makerEmail){
                 return toast.error("sorry!only maker can delete it")
             }
-            const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/deleteassignment/${email}`,{
-                withCredentials:true
-            })
+            const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/deleteassignment/${id}`)
             console.log(data)
             toast.success('Deleted Succesfully')
             getData()
@@ -40,50 +54,112 @@ const Assignments = () => {
             toast.error(err.message)
         }
     }
-    const handlesortby = (difficulty) =>{
-        setSelectedDifficulty(difficulty)
+   
+    const handlePagination =(v)=>{
+        console.log(v)
+        setCurrentPage(v)
     }
-    const filtered = selectedDifficulty? assignments.filter(assignment=>assignment.difficulty_level === selectedDifficulty) : assignments
     return (
         <div className='w-[1260px] mx-auto'>
-             <div className="mt-8">
-                <h1 className='text-4xl font-bold text-center'></h1>
+             
                 <div className="flex justify-center">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn m-1" >Sort By Difficulty level</div>
-                        <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><button onClick={()=>handlesortby('Easy')}>Easy</button></li>
-                            <li><button onClick={()=>handlesortby('Medium')}>Medium</button></li>
-                            <li><button onClick={()=>handlesortby('Hard')}>Hard</button></li>
-                        </ul>
-                    </div>
-                </div>
-                </div>
+            <select
+              name='category'
+              id='category'
+              value={filter}
+              onChange={e=> setFilter(e.target.value.trim())}
+              className='border-none mt-8  p-4 rounded-lg'
+            >
+              <option value=''>Sort By Difficulty level</option>
+              <option value='Easy'>Easy</option>
+              <option value='Medium'>Medium</option>
+              <option value='Hard'>Hard</option>
+            </select>
+          </div>
 
-            <div className='grid grid-cols-3 gap-4 mt-8 w-[1260px] mx-auto'>
+                {/*  */}
+
+            <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 mt-8 w-[1260px] mx-auto'>
         {
-            filtered.map(assignment=> (
-                <div key={assignment._id} className="card w-96 bg-base-100 shadow-xl">
-<figure><img src={assignment.thumbnail_image_url} alt="Shoes" /></figure>
+            assignments.map(assignment=> (
+                <div key={assignment._id} className="card w-96 bg-base-100 shadow-xl transition duration-300 ease-in-out hover:scale-110">
+<figure><img className='h-[200px] w-full' src={assignment.thumbnail_image_url} alt="Shoes" /></figure>
 <div className="card-body">
 <h2 className="card-title">{assignment.title}</h2>
-<p>Deadline: {new Date(assignment.due_date).toLocaleDateString() }</p>
-<p>Marks: {assignment.marks}</p>
-<p>Difficulty: {assignment.difficulty_level}</p>
-<p>{assignment.description}</p>
+<p><span className='font-bold'>Deadline</span>: {new Date(assignment.due_date).toLocaleDateString() }</p>
+<p><span className='font-bold'>Marks</span>: {assignment.marks}</p>
+<p><span className='font-bold'>Difficulty</span>: {assignment.difficulty_level}</p>
+<p><span className='font-bold'>Description</span>:{assignment.description}</p>
 <div className="card-actions justify-end">
-
-        <button onClick={()=>handleDelete(assignment.maker.email)} className="btn ">Delete</button>
-        
-        <Link to={`/updateassignments/${assignment._id}`}><button className="btn ">Update</button></Link>
-   
-  <Link to={`/viewassignmengts/${assignment._id}`}><button className="btn btn-primary">View Assignments</button></Link>
+        <button onClick={()=>handleDelete(assignment._id, assignment.maker.email)} className="btn bg-red-800 text-white">Delete</button>
+        <Link to={`/updateassignments/${assignment._id}`}><button className="btn bg-green-800 text-white">Update</button></Link>
+  <Link to={`/viewassignmengts/${assignment._id}`}><button className="btn bg-black text-white">View Assignments</button></Link>
 </div>
 </div>
 </div>
             ))
         }
     </div>
+    {/* pagination */}
+    <div className='flex justify-center mt-12'>
+        <button
+        disabled={currentPage===1}
+        onClick={()=>handlePagination(currentPage-1)}
+         className='px-4 py-2 mx-1 text-gray-700 disabled:text-gray-500 capitalize bg-gray-200 rounded-md disabled:cursor-not-allowed disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:bg-blue-500  hover:text-white'>
+          <div className='flex items-center -mx-1'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='w-6 h-6 mx-1 rtl:-scale-x-100'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M7 16l-4-4m0 0l4-4m-4 4h18'
+              />
+            </svg>
+
+            <span className='mx-1'>previous</span>
+          </div>
+        </button>
+
+        {pageButton.map(btnNum => (
+          <button
+            key={btnNum}
+            onClick={()=>handlePagination(btnNum)}
+            className={`${currentPage === btnNum? 'bg-black text-white' : ''} hidden px-4 py-2 mx-1 transition-colors duration-300 transform  rounded-md sm:inline hover:bg-blue-500  hover:text-white`}
+          >
+            {btnNum}
+          </button>
+        ))}
+
+        <button 
+         disabled={currentPage===pagenumber}
+        onClick={()=>handlePagination(currentPage+1)}
+        className='px-4 py-2 mx-1 text-gray-700 transition-colors duration-300 transform bg-gray-200 rounded-md hover:bg-blue-500 disabled:hover:bg-gray-200 disabled:hover:text-gray-500 hover:text-white disabled:cursor-not-allowed disabled:text-gray-500'>
+          <div className='flex items-center -mx-1'>
+            <span className='mx-1'>Next</span>
+
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='w-6 h-6 mx-1 rtl:-scale-x-100'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M17 8l4 4m0 0l-4 4m4-4H3'
+              />
+            </svg>
+          </div>
+        </button>
+      </div>
         </div>
     );
 };

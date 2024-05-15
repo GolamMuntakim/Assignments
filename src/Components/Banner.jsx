@@ -25,85 +25,85 @@ const Banner = () => {
             </div>
             {/* features */}
             <div className="w-[1260px] mx-auto">
-            <div className="grid grid-cols-3 w-[1000px] mx-auto gap-4">
-                <div className="shadow-xl p-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 w-[1000px] mx-auto gap-4 ">
+                <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2">
-                    <div className="avatar"><div className="w-10 rounded-full"><img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /></div>
+                    <div className="avatar"><div className="w-10 rounded-full"><img src="/images/1.png" /></div>
                     </div>
                     <div><h1 className="font-bold">Arifin Shuvo</h1></div>
                     </div>
-                    <div className="flex items-center"><img src="/images/favorite.png" alt="" srcset="" />4.8</div>
+                    <div className="flex items-center"><img src="/images/favorite.png" alt=""  />4.8</div>
                 </div>
                 <p className="mt-4">Complete Web Design: from Figma to Webflow to Freelancing course 2023</p>
                 <div className="divider divider-start"></div>
                 <p className="flex justify-between font-bold">Enroll Now<FaArrowRight />
 </p>
                 </div>
-                <div className="shadow-xl p-8">
+                <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2">
-                    <div className="avatar"><div className="w-10 rounded-full"><img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /></div>
+                    <div className="avatar"><div className="w-10 rounded-full"><img src="/images/2.png" /></div>
                     </div>
-                    <div><h1 className="font-bold">Arifin Shuvo</h1></div>
+                    <div><h1 className="font-bold">Dianne Russell</h1></div>
                     </div>
-                    <div className="flex items-center"><img src="/images/favorite.png" alt="" srcset="" />4.8</div>
+                    <div className="flex items-center"><img src="/images/favorite.png" alt=""  />4.8</div>
                 </div>
                 <p className="mt-4">Complete Web Design: from Figma to Webflow to Freelancing course 2023</p>
                 <div className="divider divider-start"></div>
                 <p className="flex justify-between font-bold">Enroll Now<FaArrowRight />
 </p>
                 </div>
-                <div className="shadow-xl p-8">
+                <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2">
-                    <div className="avatar"><div className="w-10 rounded-full"><img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /></div>
+                    <div className="avatar"><div className="w-10 rounded-full"><img src="/images/3.png" /></div>
                     </div>
-                    <div><h1 className="font-bold">Arifin Shuvo</h1></div>
+                    <div><h1 className="font-bold">Jerome Bell</h1></div>
                     </div>
-                    <div className="flex items-center"><img src="/images/favorite.png" alt="" srcset="" />4.8</div>
+                    <div className="flex items-center"><img src="/images/favorite.png" alt=""  />4.8</div>
                 </div>
                 <p className="mt-4">Complete Web Design: from Figma to Webflow to Freelancing course 2023</p>
                 <div className="divider divider-start"></div>
                 <p className="flex justify-between font-bold">Enroll Now<FaArrowRight />
 </p>
                 </div>
-                <div className="shadow-xl p-8">
+                <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2">
-                    <div className="avatar"><div className="w-10 rounded-full"><img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /></div>
+                    <div className="avatar"><div className="w-10 rounded-full"><img src="images/4.png" /></div>
                     </div>
-                    <div><h1 className="font-bold">Arifin Shuvo</h1></div>
+                    <div><h1 className="font-bold">Jenny Wilson</h1></div>
                     </div>
-                    <div className="flex items-center"><img src="/images/favorite.png" alt="" srcset="" />4.8</div>
+                    <div className="flex items-center"><img src="/images/favorite.png" alt=""  />4.8</div>
                 </div>
                 <p className="mt-4">Complete Web Design: from Figma to Webflow to Freelancing course 2023</p>
                 <div className="divider divider-start"></div>
                 <p className="flex justify-between font-bold">Enroll Now<FaArrowRight />
 </p>
                 </div>
-                <div className="shadow-xl p-8">
+                <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2">
-                    <div className="avatar"><div className="w-10 rounded-full"><img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /></div>
+                    <div className="avatar"><div className="w-10 rounded-full"><img src="/images/5.png" /></div>
                     </div>
-                    <div><h1 className="font-bold">Arifin Shuvo</h1></div>
+                    <div><h1 className="font-bold">Robert Fox</h1></div>
                     </div>
-                    <div className="flex items-center"><img src="/images/favorite.png" alt="" srcset="" />4.8</div>
+                    <div className="flex items-center"><img src="/images/favorite.png" alt=""  />4.8</div>
                 </div>
                 <p className="mt-4">Complete Web Design: from Figma to Webflow to Freelancing course 2023</p>
                 <div className="divider divider-start"></div>
                 <p className="flex justify-between font-bold">Enroll Now<FaArrowRight />
 </p>
                 </div>
-                <div className="shadow-xl p-8">
+                <div className="shadow-xl p-8 transition duration-300 ease-in-out hover:scale-110">
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2">
-                    <div className="avatar"><div className="w-10 rounded-full"><img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" /></div>
+                    <div className="avatar"><div className="w-10 rounded-full"><img src="/images/6.png" /></div>
                     </div>
-                    <div><h1 className="font-bold">Arifin Shuvo</h1></div>
+                    <div><h1 className="font-bold">Kathryn Murphy</h1></div>
                     </div>
-                    <div className="flex items-center"><img src="/images/favorite.png" alt="" srcset="" />4.8</div>
+                    <div className="flex items-center"><img src="/images/favorite.png" alt=""  />4.8</div>
                 </div>
                 <p className="mt-4">Complete Web Design: from Figma to Webflow to Freelancing course 2023</p>
                 <div className="divider divider-start"></div>
@@ -120,20 +120,20 @@ const Banner = () => {
                 <p>Empowering you to reach your goals through online education!</p>
             </div>
            <div className="mt-10">
-           <div className="grid grid-cols-3  w-[1200px] p-8 gap-4">
-                <div className="flex flex-col items-center bg-[#E1E2E3] p-8 backdrop-blur-md  rounded-xl">
+           <div className="grid grid-cols-1 lg:grid-cols-3  w-[1200px] p-8 gap-4">
+                <div className="flex flex-col items-center bg-[#E1E2E3] p-8 backdrop-blur-md  rounded-xl transition duration-300 ease-in-out hover:scale-110">
                     <img src="/images/verify.png" alt="" />
                     <h1 className="mt-4">Certified Platform</h1>
                     <p>We Empowering you to reach your goals <br /> through online education!</p>
                     <p className="flex gap-2 items-center">Know More <FaArrowRight /></p>
                 </div>
-                <div className="flex flex-col items-center bg-[#E1E2E3] p-8  rounded-xl">
+                <div className="flex flex-col items-center bg-[#E1E2E3] p-8  rounded-xl transition duration-300 ease-in-out hover:scale-110">
                     <img src="/images/like.png" alt="" />
                     <h1 className="mt-4">World-class Content</h1>
                     <p>We Empowering you to reach your goals <br /> through online education!</p>
                     <p className="flex gap-2 items-center">Know More <FaArrowRight /></p>
                 </div>
-                <div className="flex flex-col items-center bg-[#E1E2E3] p-8  rounded-xl">
+                <div className="flex flex-col items-center bg-[#E1E2E3] p-8  rounded-xl transition duration-300 ease-in-out hover:scale-110">
                     <img src="/images/customer.png" alt="" />
                     <h1 className="mt-4">Online Support</h1>
                     <p>We Empowering you to reach your goals <br /> through online education!</p>

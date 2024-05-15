@@ -25,22 +25,13 @@ const Marks = () => {
         const form = e.target 
         const obtainednumber = parseFloat(form.marks.value)
         const feedback = form.feedback.value
-        
-        // const email = user?.email
-        // const name = user?.displayName
-        // const status = 'pending'
-        // const mark = markss[0]
+        if (obtainednumber > mark.marks){
+          return toast.error("You can not exceed the marks")
+        }
         const marksData = {
             obtainednumber:obtainednumber,
             feedback:feedback,
-            // link : mark.link,
-            // note:mark.note,
-            // name,
-            // marks:mark.marks,
-            // email,
             status:'completed',
-            // maker_email:mark.maker?.email,
-            // maker:mark.maker,
           
         }
       console.table(marksData)
@@ -64,7 +55,7 @@ const Marks = () => {
                 <section className=' p-2 md:p-6 mx-auto bg-white rounded-md shadow-md '>
                 <div className="">
                  <h1> <iframe src={mark.link} width="600" height="300" allow="autoplay"></iframe></h1>
-                         {/* <h1 className="font-bold"> submitted Doc/Pdf link :{mark.link} </h1> */}
+                         
                         <h1 className="font-bold">  Notes :{mark.note}</h1>
                       </div>
                   <form onSubmit={(e)=>handleFormSubmission(e,mark)}>

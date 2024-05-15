@@ -4,10 +4,12 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import Lottie from 'lottie-react';
+import register from '../register.json'
 
 const Register = () => {
     const navigate = useNavigate()
-    const {signIn,signInWithGoogle, createUser, updateUserProfile, user, setUser} = useContext(AuthContext)
+    const {signIn,signInWithGoogle, createUser, updateUserProfile, user, setUser,loading} = useContext(AuthContext)
     const location = useLocation()
     const from = location.state || '/'
     const handleGoogleSignin = async() =>{
@@ -36,6 +38,9 @@ const Register = () => {
         const photo = form.photo.value 
         const pass = form.password.value 
         console.log({email, name, pass, photo})
+        if(pass.length<6){
+          return toast.error('Password must be at least 6 characters')
+        }
         try{
             const result = await createUser(email, pass)
             console.log(result)
@@ -55,11 +60,17 @@ const Register = () => {
             toast.error(err?.message)
         }
     }
+    if(user || loading) return <div className="min-h-screen w-full flex items-center justify-center"><span className="loading loading-infinity loading-lg  "></span></div>
     return (
-        <div>
-            <div className=''>
-      <div className='w-full max-w-sm mx-auto overflow-hidden  rounded-lg   lg:max-w-4xl '>
-        <div className='w-full mx-auto px-6 py-8 md:px-8 lg:w-1/2'>
+        <div className='flex flex-col lg:flex-row items-center justify-center'>
+           <div className='w-[400px]'>
+            <Lottie animationData={register}></Lottie>
+           </div>
+
+
+           <div className=''>
+      <div className='w-[400px] max-w-sm mx-auto overflow-hidden  rounded-lg   lg:max-w-4xl '>
+        <div className='w-[400px] mx-auto px-6 py-8 md:px-8 '>
           <div className=''>
           </div>
           <form onSubmit={handleSignUp}>
@@ -76,6 +87,7 @@ const Register = () => {
                 name='name'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
+                required
               />
             </div>
             <div className='mt-4'>
@@ -91,6 +103,7 @@ const Register = () => {
                 name='photo'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='text'
+                required
               />
             </div>
             <div className='mt-4'>
@@ -106,6 +119,7 @@ const Register = () => {
                 name='email'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='email'
+                required
               />
             </div>
 
@@ -125,6 +139,7 @@ const Register = () => {
                 name='password'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='password'
+                required
               />
             </div>
             <div className='mt-6'>

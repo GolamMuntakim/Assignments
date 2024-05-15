@@ -1,14 +1,17 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Lottie from 'lottie-react';
+import login from '../login.json'
 
 
 const Login = () => {
     const {signIn,signInWithGoogle,user,loading} = useContext(AuthContext)
     const navigate= useNavigate()
     const location = useLocation()
+    const [error, setError] = useState('')
     const from = location.state || '/'
     useEffect(()=>{
       if(user){
@@ -37,6 +40,7 @@ const Login = () => {
     //Authentication for email and password sign in 
     const handleSignin = async e =>{
         e.preventDefault()
+        setError('')
         const form = e.target
         const email = form.email.value
         const pass = form.password.value 
@@ -53,16 +57,26 @@ const Login = () => {
             navigate(from, {replace:true})
             toast.success('signin succesfully')
         }catch(err){
+          if(err.code === 'auth/invalid-credential'){
+            toast.error('Incorrect Password')
+             window.location.reload()
+          }else if(err.code === 'auth/user-not-found'){
+            setError('user not found')
+          }else{
+            setError(err.message)
+          }
             console.log(err)
             toast.error(err?.message)
         }
     }
-    if(user || loading) return
+    if(user|| loading ) return <div className="min-h-screen w-full flex items-center justify-center"><span className="loading loading-infinity loading-lg  "></span></div>
     return (
-        <div>
-             <div className=''>
-      <div className=' max-w-sm mx-auto overflow-hidden  rounded-lg  lg:max-w-4xl '>
-        <div className='w-full mx-auto px-6 py-8 md:px-8 lg:w-1/2'>
+        <div className="w-[1260px] mx-auto">
+             <div className='flex flex-col lg:flex-row items-center justify-center mx-auto'>
+     <div className="w-[400px] mx-auto"><Lottie animationData={login}></Lottie></div>
+     <div className="w-[400px] mx-auto"> 
+      <div className='   rounded-lg   '>
+        <div className=' mt-8 '>
           <form onSubmit={handleSignin}>
             <div className='mt-4'>
               <label
@@ -74,9 +88,11 @@ const Login = () => {
               <input
                 id='LoggingEmailAddress'
                 autoComplete='email'
+                placeholder="Email"
                 name='email'
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='email'
+                required
               />
             </div>
 
@@ -94,9 +110,12 @@ const Login = () => {
                 id='loggingPassword'
                 autoComplete='current-password'
                 name='password'
+                placeholder="Password"
                 className='block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300'
                 type='password'
+                required
               />
+              {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
             </div>
             <div className='mt-6'>
               <button
@@ -147,6 +166,7 @@ const Login = () => {
             </span>
           </div>
         </div>
+      </div>
       </div>
     </div>
         </div>

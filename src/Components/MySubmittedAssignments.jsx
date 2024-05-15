@@ -1,35 +1,47 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 
 const MySubmittedAssignments = () => {
-  const [submitted, setSubmitted] = useState([])
-  console.log(submitted)
+  // const [submitted, setSubmitted] = useState([])
+  // console.log(submitted)
   // const {email} = submitted || {}
     const {user,setLoading} = useContext(AuthContext)
-    // console.log(user)
-    useEffect(()=>{
-        getData() 
-    },[user])
+
+    const {data : submitted = [],
+       isLoading, refetch, isError, error} = useQuery({
+      queryFn : ()=> getData(),
+      queryKey : ['']
+    })
+   
+    console.log(submitted)
+    // useEffect(()=>{
+    //     getData() 
+    // },[user])
+
+
     const getData= async()=>{
       try {
         const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/submit/${user?.email}`,{
           withCredentials:true
         });
-        setSubmitted(data);
-        setLoading(false);
+        return (data);
+        // setLoading(false);
       } catch (error) {
         console.error("Error fetching submitted assignments:", error);
         setLoading(false);
       }
     }
     
-
+    if(isError || error){
+      console.log(isError, error)
+    }
     return (
         <div>
-             <section className='container px-4 mx-auto pt-12'>
-      <div className='flex items-center gap-x-3'>
+             <section className='container px-4 mx-auto pt-12 min-h-[calc(100vh-306px)]'>
+      <div className='flex justify-center items-center gap-x-3'>
         <h2 className='text-lg font-medium text-gray-800 '>My Submitted Assignments</h2>
       </div>
 

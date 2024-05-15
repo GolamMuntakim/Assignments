@@ -37,7 +37,8 @@ import Marks from "../Components/Marks";
       {
         path:'/assignmentsPage',
         element:<Assignments></Assignments>,
-        // loader:() => fetch(),
+        // loader:()=>fetch(`${import.meta.env.VITE_API_URL}/deleteassignment`)
+       
       },
       {
         path:'/viewassignmengts/:id',
@@ -71,7 +72,13 @@ import Marks from "../Components/Marks";
         element:<Marks></Marks>,
         loader:({params})=> fetch(`${import.meta.env.VITE_API_URL}/pendingassignments`)
        
-      }
+      },
+      // {
+      //   path:'deleteassignment/:id',
+      //   loader:({params}) => fetch(`${import.meta.env.VITE_API_URL}/deleteassignment/${params.id}`),
+      // }
+    
+
     ]
     },
   ]);

@@ -10,6 +10,7 @@ const PendingAssignments = () => {
     const {user} = useContext(AuthContext)
     // const navigate = useNavigate()
     // console.log(user)
+    
     useEffect(()=>{
         if(user && pending.length ===0){
           getData()
@@ -31,8 +32,8 @@ const PendingAssignments = () => {
     const pendingassignments = pending.filter(assignment => assignment.status !== 'completed')
     return (
         <div>
-             <section className='container px-4 mx-auto pt-12'>
-      <div className='flex items-center gap-x-3'>
+             <section className='container px-4 mx-auto pt-12 min-h-[calc(100vh-306px)]'>
+      <div className='flex justify-center items-center gap-x-3'>
         <h2 className='text-lg font-medium text-gray-800 '>Pending Assignments</h2>
       </div>
 
