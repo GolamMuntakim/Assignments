@@ -69,8 +69,8 @@ const UpdateAssignment = () => {
 
     return (
         <div>
-        <div className='flex justify-center items-center min-h-[calc(100vh-306px)] my-12'>
- <section className=' p-2 md:p-6 mx-auto  rounded-md shadow-md bg-black text-white'>
+        <div className='flex justify-center mx-auto w-[350px] md:w-[400px] lg:w-[1260px] items-center min-h-[calc(100vh-306px)] my-12'>
+ <section className=' p-2 md:p-6 mx-auto w-[400px]  rounded-md shadow-md bg-black text-white'>
    <h2 className='text-lg font-semibold text-white capitalize text-center'>
      Update Your assignments
    </h2>
@@ -106,7 +106,7 @@ const UpdateAssignment = () => {
          <label className='text-white'>Due Date</label>
 
          {/* Date Picker Input Field */}
-         <DatePicker defaultValue={due_date} selected={startDate} onChange={(date) => setStartDate(date)} />
+         <DatePicker className="h-[38px] rounded-lg" defaultValue={due_date} selected={startDate} onChange={(date) => setStartDate(date)} />
        </div>
 
        <div className='flex flex-col gap-2 '>
@@ -117,7 +117,7 @@ const UpdateAssignment = () => {
          defaultValue={difficulty_level}
            name='category'
            id='category'
-           className='border p-2 rounded-md text-black'
+           className='border p-2 rounded-md text-black w-[100px] lg:w-[180px]'
            required
          >
            <option value='Easy'>Easy</option>
