@@ -10,7 +10,7 @@ const ViewAssignmengts = () => {
     
     return (
         <div>
-            <div className="flex flex-col w-[1260px] mx-auto mt-8 p-6 space-y-6 overflow-hidden  shadow-md bg-black text-gray-100">
+            <div className="flex flex-col w-[350px] md:w-[400px] lg:w-[1260px] mx-auto mt-8 p-6 space-y-6 overflow-hidden  shadow-md bg-black text-gray-100">
 	<div className="flex space-x-4">
 		<img alt="" src={assignments.maker.photo} className="object-cover w-12 h-12 rounded-full shadow bg-gray-500" />
 		<div className="flex flex-col space-y-1">
