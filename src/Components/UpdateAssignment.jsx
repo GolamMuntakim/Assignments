@@ -6,6 +6,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const UpdateAssignment = () => {
     const assignments = useLoaderData()
@@ -69,6 +70,11 @@ const UpdateAssignment = () => {
 
     return (
         <div>
+          <Helmet>
+            <title>
+              Update Assignment
+            </title>
+          </Helmet>
         <div className='flex justify-center mx-auto w-[350px] md:w-[400px] lg:w-[1260px] items-center min-h-[calc(100vh-306px)] my-12'>
  <section className=' p-2 md:p-6 mx-auto w-[400px]  rounded-md shadow-md bg-black text-white'>
    <h2 className='text-lg font-semibold text-white capitalize text-center'>

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Lottie from 'lottie-react';
 import login from '../login.json'
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -72,6 +73,11 @@ const Login = () => {
     if(user|| loading ) return <div className="min-h-screen w-full flex items-center justify-center"><span className="loading loading-infinity loading-lg  "></span></div>
     return (
         <div className="w-[350px] md:w-[400px] lg:w-[1260px] mx-auto">
+          <Helmet>
+            <title>
+              Login
+            </title>
+          </Helmet>
              <div className='flex flex-col lg:flex-row items-center justify-center mx-auto'>
      <div className="w-[350px] lg:w-[400px] mx-auto"><Lottie animationData={login}></Lottie></div>
      <div className="w-[350px] lg:w-[400px] mx-auto"> 

@@ -4,6 +4,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../Providers/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const Assignments = () => {
     const [pages, setPage] = useState(3)
@@ -61,6 +62,11 @@ console.log(count)
     }
     return (
         <div className='w-[350px] md:w-[400px] lg:w-[1260px]  mx-auto'>
+          <Helmet>
+            <title>
+              Assignment
+            </title>
+          </Helmet>
              
                 <div className="flex justify-center">
             <select

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 
 const MySubmittedAssignments = () => {
@@ -40,6 +41,11 @@ const MySubmittedAssignments = () => {
     }
     return (
         <div>
+          <Helmet>
+            <title>
+              Attempted Assignemnt
+            </title>
+          </Helmet>
              <section className='container px-4 mx-auto pt-12 min-h-[calc(100vh-306px)]'>
       <div className='flex justify-center items-center gap-x-3'>
         <h2 className='text-lg font-medium text-gray-800 '>My Submitted Assignments</h2>

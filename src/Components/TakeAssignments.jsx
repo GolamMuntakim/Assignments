@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -63,6 +64,9 @@ const TakeAssignments = () => {
     }
     return (
         <div >
+          <Helmet>
+            <title>Take Assignment</title>
+          </Helmet>
              <div className="w-[350px] md:w-[400px] mx-auto lg:w-[1260px] flex mt-10 min-h-[calc(100vh-306px)]">
              <form onSubmit={handleFormSubmission} className="mx-auto h-[300px] bg-black p-8 rounded-lg">
           <div className='mx-auto'>

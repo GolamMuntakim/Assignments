@@ -6,6 +6,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const CreateAssignments = () => {
     const {user} = useContext(AuthContext)
@@ -48,6 +49,11 @@ const CreateAssignments = () => {
     }
     return (
         <div>
+          <Helmet>
+            <title>
+              Create Assignemnt
+            </title>
+          </Helmet>
              <div className='flex justify-center w-[350px] md:w-[400px] mx-auto lg:w-[1260px] items-center min-h-[calc(100vh-306px)] my-12'>
       <section className=' p-2 md:p-6 mx-auto bg-black rounded-md shadow-md w-[350px] lg:w-[500px] p-4'>
         <h2 className='text-lg font-semibold text-white capitalize text-center'>

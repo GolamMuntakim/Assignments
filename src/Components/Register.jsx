@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import register from '../register.json'
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const navigate = useNavigate()
@@ -63,6 +64,11 @@ const Register = () => {
     if(user || loading) return <div className="min-h-screen w-full flex items-center justify-center"><span className="loading loading-infinity loading-lg  "></span></div>
     return (
         <div className='flex flex-col lg:flex-row items-center justify-center'>
+          <Helmet>
+           <title>
+           Register
+           </title>
+          </Helmet>
            <div className='w-[400px]'>
             <Lottie animationData={register}></Lottie>
            </div>
