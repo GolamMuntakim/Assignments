@@ -14,32 +14,30 @@ const Assignments = () => {
     const [currentPage, setCurrentPage] = useState(1)
     const [assignments, setAssignments] = useState([])
     const [filter, setFilter] = useState(' ')
-    console.log(assignments)
+    const [search, setSearch] = useState('')
+    // console.log(assignments)
     const {user} = useContext(AuthContext)
-    console.log(user)
+    // console.log(user)
     console.log(assignments)
 
     useEffect(()=>{
         getData()
-    },[currentPage,pages,filter])
+    },[currentPage,pages,filter,search])
 
     const getData = async () =>{
-        const {data} = await axios(`${import.meta.env.VITE_API_URL}/all-assignments?page=${currentPage}&size=${pages}&filter=${filter.trim()}`)
+        const {data} = await axios(`${import.meta.env.VITE_API_URL}/all-assignments?page=${currentPage}&size=${pages}&filter=${filter.trim()}&search=${search}`)
         setAssignments(data)
         
     }
     // second
     useEffect(()=>{
         getCount()
-    },[filter])
+    },[filter,search])
 
     const getCount = async () =>{
-        const {data} = await axios(`${import.meta.env.VITE_API_URL}/assignments-count?filter=${filter}`)
+        const {data} = await axios(`${import.meta.env.VITE_API_URL}/assignments-count?filter=${filter}&search=${search}`)
         setCount(data.count)
     }
-
-console.log(count)
-
 
     const handleDelete= async (id, makerEmail) =>{
         try{
@@ -47,19 +45,26 @@ console.log(count)
                 return toast.error("sorry!only maker can delete it")
             }
             const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/deleteassignment/${id}`)
-            console.log(data)
+            // console.log(data)
             toast.success('Deleted Succesfully')
             getData()
         }catch(err){
-            console.log(err.message)
+            // console.log(err.message)
             toast.error(err.message)
         }
     }
    
     const handlePagination =(v)=>{
-        console.log(v)
+        // console.log(v)
         setCurrentPage(v)
     }
+    const handleSearch=e=>{
+      e.preventDefault()
+      const text = e.target.search.value
+      setSearch(text)
+      
+    }
+    // console.log(search)
     return (
         <div className='w-[350px] md:w-[400px] lg:w-[1260px]  mx-auto'>
           <Helmet>
@@ -68,7 +73,8 @@ console.log(count)
             </title>
           </Helmet>
              
-                <div className="flex justify-center">
+             <div className='flex items-center justify-center gap-4'>
+             <div className="">
             <select
               name='category'
               id='category'
@@ -82,6 +88,25 @@ console.log(count)
               <option value='Hard'>Hard</option>
             </select>
           </div>
+          <div>
+            
+          <form onSubmit={handleSearch}>
+            <div className='flex p-1 overflow-hidden border rounded-lg    focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300 mt-6'>
+              <input
+                className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
+                type='text'
+                name='search'
+                placeholder='Enter Job Title'
+                aria-label='Enter Job Title'
+              />
+
+              <button className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                Search
+              </button>
+            </div>
+          </form>
+          </div>
+             </div>
 
                 {/*  */}
 
