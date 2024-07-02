@@ -1,6 +1,6 @@
 ### project name : E-Study
 ### Website url : https://b9-a11-37619.web.app/
-### server side github link : 
+### server side github link : https://github.com/GolamMuntakim/Assignment-server
 ### Overview of project : This is a education based platform, here user can make assingment for the students and student will pic a assignment and submit it , the the user who made the assignment they will give the number every user and student have their own my submission page.
 ### Technology: tanstack/react-query,axios,date-fns,firebase,lottie-react,react-datepicker,react-dom,react-helmet,react-hot-toast,react-icons,react-lottie,react-router-dom
 ### Features : 
